@@ -1,0 +1,38 @@
+version: '3'
+
+services:  
+  
+  breakit:  
+  ################################################################################
+    
+    #容器名稱
+    container_name: "breakit"
+    
+    #docker hub 下載 
+    image: turtleislan/laravel:7.1-21
+    
+    networks:
+      - dbnet
+    external_links:
+      - mysql-db:mysql-db
+      
+    ports:
+      - "9002:80"
+   
+   
+    volumes:      
+      - "./htdocs:/var/www/laravel/htdocs"
+      - "./apache_default.conf:/etc/apache2/sites-available/000-default.conf"     
+ 
+    restart: always
+    
+    environment:
+      TERM: xterm
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: breakit
+
+
+      
+networks:
+  dbnet:
+    external: true
