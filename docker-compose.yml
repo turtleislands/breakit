@@ -17,7 +17,7 @@ services:
       - mysql-db:mysql-db
       
     ports:
-      - "9002:80"
+      - "8004:80"
    
    
     volumes:      
